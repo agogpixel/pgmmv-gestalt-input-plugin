@@ -1,0 +1,14 @@
+{
+  "PLUGIN_NAME": "Gestalt Input",
+  "PLUGIN_DESCRIPTION": "Input condition with JSON; Resolves to an operable controller*.",
+  "PLUGIN_AUTHOR": "kidthales <kidthales@agogpixel.com>",
+  "PLUGIN_HELP": "See help.md",
+
+  "LINK_CONDITION_0_NAME": "Gestalt Input Condition",
+  "LINK_CONDITION_0_DESCRIPTION": "Input condition with JSON; Resolves to an operable controller*.",
+  "LINK_CONDITION_0_PARAMETER_0_NAME": "Input Condition JSON",
+  "LINK_CONDITION_0_PARAMETER_1_NAME": "Controller Fallback",
+  "LINK_CONDITION_0_PARAMETER_1_PARAM_0_NAME": "ANY CONTROLLER",
+  "LINK_CONDITION_0_PARAMETER_1_PARAM_1_NAME": "ALWAYS FALSE",
+  "LINK_CONDITION_0_PARAMETER_2_NAME": "Input Condition Identifier"
+}
