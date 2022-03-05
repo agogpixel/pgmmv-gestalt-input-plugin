@@ -16,13 +16,7 @@ import type { JsonValue } from '@agogpixel/pgmmv-ts/api/types';
 
 import { AgtkLinkConditionPlugin } from '@agogpixel/pgmmv-ts/api/agtk/plugin/link-condition-plugin';
 
-import {
-  InputConditionClause,
-  InputConditionKeyJsonClause,
-  transformInputConditionKeyJsonClause,
-  validateInputConditionKeyJsonClause
-} from './input-condition';
-
+import { InputKey, transformInputClause } from './input-condition';
 import {
   InputConditionFallbackParameterId,
   inputConditionParameterDefaults,
@@ -32,11 +26,13 @@ import {
   linkConditions
 } from './link-conditions';
 import localizations from './locale';
+import { JsonLogicConstraint } from '@agogpixel/pgmmv-link-condition-support/src/json-logic/constraint';
+import { JsonLogicClause } from '@agogpixel/pgmmv-link-condition-support/src/json-logic/clause';
 
 /**
  *
  */
-type InputCondition = [InputConditionClause, InputConditionFallbackParameterId];
+type InputCondition = [JsonLogicConstraint<[number]>, InputConditionFallbackParameterId];
 
 /**
  *
@@ -120,12 +116,11 @@ export function createGestaltInputPlugin() {
       }
     }
 
-    const intermediate = JSON.parse(json as string) as InputConditionKeyJsonClause;
-    const result = validateInputConditionKeyJsonClause(intermediate);
+    const intermediate = JSON.parse(json as string) as JsonLogicClause<InputKey, boolean>;
+    const result = transformInputClause(intermediate);
 
-    if (typeof result === 'string') {
-      logger.error(`parseInputCondition ${identifier}: Invalid input condition JSON: ${result}`);
-      logger.error(intermediate);
+    if (Array.isArray(result)) {
+      logger.error(`parseInputCondition ${identifier}: Invalid JSON logic detected:\n${result.join('\n  - ')}`);
 
       let warningLogged = false;
 
@@ -142,14 +137,7 @@ export function createGestaltInputPlugin() {
       ];
     }
 
-    const condition = transformInputConditionKeyJsonClause(intermediate);
-
-    return [
-      function (controllerId) {
-        return condition(controllerId);
-      },
-      fallback
-    ];
+    return [result, fallback];
   }
 
   /**
