@@ -28,7 +28,7 @@
     "@agogpixel/cavy": "~0.1.1",
     "@agogpixel/pgmmv-logging-support": "~0.1.0",
     "@agogpixel/pgmmv-object-support": "~0.1.0",
-    "@agogpixel/pgmmv-link-condition-support": "0.1.0--dev-build-1646495912",
+    "@agogpixel/pgmmv-link-condition-support": "~0.1.0",
     "@agogpixel/pgmmv-plugin-support": "~0.1.0",
     "@agogpixel/pgmmv-resource-support": "~0.1.0",
     "@agogpixel/pgmmv-ts": "~0.1.0",
