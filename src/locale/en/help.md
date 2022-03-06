@@ -3,6 +3,7 @@
 An alternative way to define input link conditions with the following:
 
 -   JSON specification that maps an input key (`OperationKey` or `ReservedKeyCodePc`) to either a pressed (`true`) or released (`false`) state.
+    -   Available logic connectives: `NOT`, `AND`, `OR`, `NAND`, `NOR`, `XOR`, & `XNOR`.
     -   Any errors in the input specification are output to the player's "Runtime Console Log"; an input condition will always return `false` in this case.
 -   Resolves any object instance to an operable controller.
     -   Configurable fallback behavior when a controller is not found.
@@ -21,63 +22,6 @@ These features can open up new approaches to how you can structure your PGMMV ga
     -   `Controller Fallback`: Define how this input condition behaves when no operable controller is found.
         -   `ANY CONTROLLER`: Polls all controller IDs for first input condition satisfaction found. This is the default behavior for non-starting point objects.
         -   `ALWAYS FALSE`: The link condition will never resolve to true.
-
-## Input Condition JSON EBNF
-
-[Extended Backus-Naur form](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form) representation:
-
-```
-clause       = and clause | or clause | predicate ;
-clauses      = clause [ , ',' , clauses ] ;
-clause array = '[' , clauses , ']' ;
-and clause   = '{' , '"AND"' , ':' , clause array '}' ;
-or clause    = '{' , '"OR"' , ':' , clause array '}' ;
-predicate    = '[' , key , ',' , boolean , ']' ;
-boolean      = 'true' | 'false'
-key          =
-    | '"Op_A"'
-    | '"Op_B"'
-    | '"Op_X"'
-    | '"Op_Y"'
-    | '"Op_R1"'
-    | '"Op_R2"'
-    | '"Op_L1"'
-    | '"Op_L2"'
-    | '"Op_Up"'
-    | '"Op_Down"'
-    | '"Op_Left"'
-    | '"Op_Right"'
-    | '"Op_LeftStickUp"'
-    | '"Op_LeftStickDown"'
-    | '"Op_LeftStickLeft"'
-    | '"Op_LeftStickRight"'
-    | '"Op_RightStickUp"'
-    | '"Op_RightStickDown"'
-    | '"Op_RightStickLeft"'
-    | '"Op_RightStickRight"'
-    | '"Op_LeftClick"'
-    | '"Op_RightClick"'
-    | '"Op_Start"'
-    | '"Op_Select"'
-    | '"Op_Home"'
-    | '"Op_Ok"'
-    | '"Op_Cancel"'
-    | '"Pc_W"'
-    | '"Pc_A"'
-    | '"Pc_S"'
-    | '"Pc_D"'
-    | '"Pc_LeftClick"'
-    | '"Pc_RightClick"'
-    | '"Pc_Up"'
-    | '"Pc_Right"'
-    | '"Pc_Down"'
-    | '"Pc_Left"'
-    | '"Pc_MiddleClick"'
-    | '"Pc_WheelUp"'
-    | '"Pc_WhellDown"'
-    | '"Pc_MousePointer"'
-    ;
-```
 
 ## Example Input Condition JSON
 
@@ -125,6 +69,68 @@ key          =
     }
   ]
 }
+```
+
+## Input Condition JSON EBNF
+
+[Extended Backus-Naur form](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form) representation:
+
+```
+clause       = not clause | and clause | or clause | nand clause | nor clause | xor clause | xnor clause | condition ;
+clause array = '[' , clauses , ']' ;
+clauses      = clause [ , ',' , clauses ] ;
+not clause   = '{' , '"NOT"' , ':' , '[' , clause , ']', '}' ;
+and clause   = '{' , '"AND"' , ':' , clause array '}' ;
+or clause    = '{' , '"OR"' , ':' , clause array '}' ;
+nand clause   = '{' , '"NAND"' , ':' , clause array '}' ;
+nor clause    = '{' , '"NOR"' , ':' , clause array '}' ;
+xor clause    = '{' , '"XOR"' , ':' , clause array '}' ;
+xnor clause    = '{' , '"XNOR"' , ':' , clause array '}' ;
+condition    = '[' , key , ',' , boolean , ']' ;
+boolean      = 'true' | 'false'
+key          =
+    | '"Op_A"'
+    | '"Op_B"'
+    | '"Op_X"'
+    | '"Op_Y"'
+    | '"Op_R1"'
+    | '"Op_R2"'
+    | '"Op_L1"'
+    | '"Op_L2"'
+    | '"Op_Up"'
+    | '"Op_Down"'
+    | '"Op_Left"'
+    | '"Op_Right"'
+    | '"Op_LeftStickUp"'
+    | '"Op_LeftStickDown"'
+    | '"Op_LeftStickLeft"'
+    | '"Op_LeftStickRight"'
+    | '"Op_RightStickUp"'
+    | '"Op_RightStickDown"'
+    | '"Op_RightStickLeft"'
+    | '"Op_RightStickRight"'
+    | '"Op_LeftClick"'
+    | '"Op_RightClick"'
+    | '"Op_Start"'
+    | '"Op_Select"'
+    | '"Op_Home"'
+    | '"Op_Ok"'
+    | '"Op_Cancel"'
+    | '"Pc_W"'
+    | '"Pc_A"'
+    | '"Pc_S"'
+    | '"Pc_D"'
+    | '"Pc_LeftClick"'
+    | '"Pc_RightClick"'
+    | '"Pc_Up"'
+    | '"Pc_Right"'
+    | '"Pc_Down"'
+    | '"Pc_Left"'
+    | '"Pc_MiddleClick"'
+    | '"Pc_WheelUp"'
+    | '"Pc_WhellDown"'
+    | '"Pc_MousePointer"'
+    ;
 ```
 
 ## Notes
