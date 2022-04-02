@@ -82,12 +82,12 @@ clauses      = clause [ , ',' , clauses ] ;
 not clause   = '{' , '"NOT"' , ':' , '[' , clause , ']', '}' ;
 and clause   = '{' , '"AND"' , ':' , clause array '}' ;
 or clause    = '{' , '"OR"' , ':' , clause array '}' ;
-nand clause   = '{' , '"NAND"' , ':' , clause array '}' ;
-nor clause    = '{' , '"NOR"' , ':' , clause array '}' ;
-xor clause    = '{' , '"XOR"' , ':' , clause array '}' ;
-xnor clause    = '{' , '"XNOR"' , ':' , clause array '}' ;
+nand clause  = '{' , '"NAND"' , ':' , clause array '}' ;
+nor clause   = '{' , '"NOR"' , ':' , clause array '}' ;
+xor clause   = '{' , '"XOR"' , ':' , clause array '}' ;
+xnor clause  = '{' , '"XNOR"' , ':' , clause array '}' ;
 condition    = '[' , key , ',' , boolean , ']' ;
-boolean      = 'true' | 'false'
+boolean      = 'true' | 'false' ;
 key          =
     | '"Op_A"'
     | '"Op_B"'
