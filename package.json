@@ -1,7 +1,7 @@
 {
   "name": "@agogpixel/pgmmv-gestalt-input-plugin",
   "description": "Gestalt input plugin for Pixel Game Maker MV.",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": "kidthales <kidthales@agogpixel.com>",
   "version": "0.2.0",
   "repository": {
