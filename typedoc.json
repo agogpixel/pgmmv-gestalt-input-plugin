@@ -1,0 +1,19 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "./src/link-conditions/input-condition/parameters",
+    "./src/link-conditions/input-condition/fetch-controller-id.function.ts",
+    "./src/link-conditions/input-condition/input-key-prefix.enum.ts",
+    "./src/link-conditions/input-condition/input-key.enum.ts",
+    "./src/link-conditions/input-condition/parse-input-condition-parameters.function.ts",
+    "./src/link-conditions/input-condition/transform-input-clause.function.ts",
+    "./src/link-conditions/input-condition/transform-input-condition.function.ts",
+    "./src/link-conditions/input-condition/validate-input-condition.function.ts",
+    "./src/link-conditions/input-condition",
+    "./src/link-conditions",
+    "./src/create-gestalt-input-plugin.function.ts",
+    "./src/gestalt-input-plugin-internal-data.type.ts",
+    "./src/gestalt-input-plugin-protected-api.interface.ts"
+  ],
+  "out": "dist/docs"
+}

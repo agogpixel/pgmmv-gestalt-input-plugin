@@ -1,4 +1,4 @@
-import { createGestaltInputPlugin } from './create-gestalt-input-plugin';
+import { createGestaltInputPlugin } from './create-gestalt-input-plugin.function';
 
 const plugin = createGestaltInputPlugin();
 

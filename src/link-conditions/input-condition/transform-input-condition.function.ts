@@ -1,14 +1,20 @@
-import type { JsonLogicCondition } from '@agogpixel/pgmmv-link-condition-support/src/json-logic/condition';
-import type { JsonLogicConstraint } from '@agogpixel/pgmmv-link-condition-support/src/json-logic/constraint';
+/**
+ * Exports transform input condition function.
+ *
+ * @module link-conditions/input-condition/transform-input-condition.function
+ */
+import type { JsonLogicCondition } from '@agogpixel/pgmmv-resource-support/src/json/logic/json-logic-condition.type';
+import type { JsonLogicConstraint } from '@agogpixel/pgmmv-resource-support/src/json/logic/json-logic-constraint.type';
 
-import { ControllerConstantPrefix } from './controller-constant-prefix';
-import type { InputKey } from './input-key';
-import { InputKeyPrefix } from './input-key-prefix';
+import { ControllerConstantPrefix } from './controller-constant-prefix.enum';
+import type { InputKey } from './input-key.enum';
+import { InputKeyPrefix } from './input-key-prefix.enum';
 
 /**
+ * Transform input condition.
  *
- * @param condition
- * @returns
+ * @param condition JSON logic input condition.
+ * @returns Transformed input condition as a JSON logic constraint.
  */
 export function transformInputCondition(
   condition: JsonLogicCondition<InputKey, boolean>

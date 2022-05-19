@@ -1,5 +1,11 @@
 /**
+ * Exports input key enumeration.
  *
+ * @module link-conditions/input-condition/input-key.enum
+ */
+
+/**
+ * Input Key enumeration.
  */
 export enum InputKey {
   Op_A = 'Op_A',
