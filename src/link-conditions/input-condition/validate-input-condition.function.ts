@@ -1,11 +1,17 @@
-import type { JsonLogicCondition } from '@agogpixel/pgmmv-link-condition-support/src/json-logic/condition';
+/**
+ * Exports validate input condition function.
+ *
+ * @module link-conditions/input-condition/validate-input-condition.function
+ */
+import type { JsonLogicCondition } from '@agogpixel/pgmmv-resource-support/src/json/logic/json-logic-condition.type';
 
-import { InputKey } from './input-key';
+import { InputKey } from './input-key.enum';
 
 /**
+ * Validate input condition.
  *
- * @param condition
- * @returns
+ * @param condition JSON logic input condition.
+ * @returns True or error message.
  */
 export function validateInputCondition(condition: JsonLogicCondition<InputKey, boolean>) {
   if (!Array.isArray(condition)) {
